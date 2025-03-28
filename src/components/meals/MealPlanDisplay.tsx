@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MealPlan, useMealPlan } from '@/contexts/MealPlanContext';
 import MealCard from './MealCard';
@@ -6,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Save, FileText, Loader2 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 
 interface MealPlanDisplayProps {
@@ -79,19 +78,19 @@ const MealPlanDisplay: React.FC<MealPlanDisplayProps> = ({ mealPlan, showActions
                 <span className="text-xs text-muted-foreground">Protein</span>
                 <span className="text-xs font-medium">{Math.round((mealPlan.totalProtein * 4 / mealPlan.totalCalories) * 100)}%</span>
               </div>
-              <Progress value={(mealPlan.totalProtein * 4 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" indicatorClassName="bg-blue-500" />
+              <Progress value={(mealPlan.totalProtein * 4 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" />
               
               <div className="flex items-center justify-between">
                 <span className="text-xs text-muted-foreground">Carbs</span>
                 <span className="text-xs font-medium">{Math.round((mealPlan.totalCarbs * 4 / mealPlan.totalCalories) * 100)}%</span>
               </div>
-              <Progress value={(mealPlan.totalCarbs * 4 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" indicatorClassName="bg-green-500" />
+              <Progress value={(mealPlan.totalCarbs * 4 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" />
               
               <div className="flex items-center justify-between">
                 <span className="text-xs text-muted-foreground">Fat</span>
                 <span className="text-xs font-medium">{Math.round((mealPlan.totalFat * 9 / mealPlan.totalCalories) * 100)}%</span>
               </div>
-              <Progress value={(mealPlan.totalFat * 9 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" indicatorClassName="bg-yellow-500" />
+              <Progress value={(mealPlan.totalFat * 9 / mealPlan.totalCalories) * 100} className="h-2 bg-gray-200" />
             </div>
           </div>
         </CardContent>

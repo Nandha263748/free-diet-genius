@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -9,7 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import { AlertCircle, Info } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -51,15 +50,11 @@ const BMICalculator = () => {
   const unitType = form.watch('unit');
   
   const calculateBMI = (weight: number, height: number, unit: string) => {
-    // Convert imperial to metric if needed
     if (unit === 'imperial') {
-      // Convert lbs to kg
       weight = weight * 0.453592;
-      // Convert inches to cm
       height = height * 2.54;
     }
     
-    // BMI formula: weight (kg) / height (m)^2
     const heightInMeters = height / 100;
     return weight / (heightInMeters * heightInMeters);
   };
@@ -72,15 +67,11 @@ const BMICalculator = () => {
   };
   
   const calculateCalorieNeeds = (weight: number, height: number, age: number, gender: string, activityLevel: string, unit: string) => {
-    // Convert imperial to metric if needed
     if (unit === 'imperial') {
-      // Convert lbs to kg
       weight = weight * 0.453592;
-      // Convert inches to cm
       height = height * 2.54;
     }
     
-    // Basal Metabolic Rate (BMR) calculation using Mifflin-St Jeor Equation
     let bmr;
     if (gender === 'female') {
       bmr = 10 * weight + 6.25 * height - 5 * age - 161;
@@ -88,7 +79,6 @@ const BMICalculator = () => {
       bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     }
     
-    // Adjust for activity level
     let activityMultiplier;
     switch (activityLevel) {
       case 'sedentary':
@@ -107,7 +97,7 @@ const BMICalculator = () => {
         activityMultiplier = 1.9;
         break;
       default:
-        activityMultiplier = 1.55; // Default to moderate
+        activityMultiplier = 1.55;
     }
     
     return Math.round(bmr * activityMultiplier);
@@ -129,7 +119,6 @@ const BMICalculator = () => {
     setBMICategory(category);
     setCalorieNeeds(calories);
     
-    // Update user health metrics if logged in
     if (user) {
       updateUser({
         healthMetrics: {
@@ -143,7 +132,6 @@ const BMICalculator = () => {
         }
       });
       
-      // Update calorie goal if needed
       if (user.preferences && !user.preferences.calorieGoal) {
         updateUser({
           preferences: {
@@ -167,7 +155,6 @@ const BMICalculator = () => {
   
   const getBMIProgressValue = (bmi: number | null) => {
     if (!bmi) return 0;
-    // Scale the BMI to a percentage (15-40 BMI range mapped to 0-100%)
     return Math.min(100, Math.max(0, ((bmi - 15) / 25) * 100));
   };
 

@@ -1,6 +1,5 @@
-
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 interface User {
   id: string;
@@ -38,7 +37,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user data exists in localStorage
     const userData = localStorage.getItem('user');
     if (userData) {
       setUser(JSON.parse(userData));
@@ -49,18 +47,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      // In a real app, you would call an API endpoint here
-      // For now, simulating a successful login with mock data
-      
-      // Mock validation
       if (email.trim() === '' || password.trim() === '') {
         throw new Error('Please enter both email and password');
       }
-      
-      // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulated user data (in a real app, this would come from backend)
       const userData: User = {
         id: '1',
         name: email.split('@')[0],
@@ -79,7 +69,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           activityLevel: 'moderate',
         },
       };
-      
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
       toast.success("Login successful");
@@ -98,22 +87,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const register = async (name: string, email: string, password: string) => {
     setIsLoading(true);
     try {
-      // In a real app, you would call an API endpoint here
-      // For now, simulating a successful registration with mock data
-      
-      // Mock validation
       if (name.trim() === '' || email.trim() === '' || password.trim() === '') {
         throw new Error('Please fill in all fields');
       }
-      
       if (password.length < 6) {
         throw new Error('Password must be at least 6 characters');
       }
-      
-      // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Simulated user data (in a real app, this would come from backend)
       const userData: User = {
         id: Date.now().toString(),
         name: name,
@@ -125,7 +105,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         },
         healthMetrics: {},
       };
-      
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
       toast.success("Registration successful");

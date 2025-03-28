@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
@@ -11,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import { Loader2, UserCircle } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -55,7 +54,6 @@ const Profile = () => {
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
   const [isUpdatingPreferences, setIsUpdatingPreferences] = useState(false);
   
-  // Redirect to login if not authenticated
   React.useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login');

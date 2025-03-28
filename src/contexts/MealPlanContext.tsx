@@ -1,7 +1,6 @@
-
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { useAuth } from './AuthContext';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 export interface Meal {
   id: string;
@@ -46,7 +45,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
   const [savedPlans, setSavedPlans] = useState<MealPlan[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Load saved meal plans from localStorage when user changes
   useEffect(() => {
     if (user) {
       const savedPlansData = localStorage.getItem(`mealPlans_${user.id}`);
@@ -58,7 +56,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [user]);
 
-  // Mock data for meals
   const breakfastOptions: Meal[] = [
     {
       id: 'b1',
@@ -215,7 +212,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
     }
   ];
 
-  // Function to generate a random meal plan (simulating AI recommendation)
   const generateMealPlan = async (preferences: any) => {
     if (!user) {
       toast.error("Please log in to generate a meal plan");
@@ -224,10 +220,8 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
 
     setIsLoading(true);
     try {
-      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Randomly select meals based on preferences (in a real app, this would be AI-generated)
       const randomBreakfast = breakfastOptions[Math.floor(Math.random() * breakfastOptions.length)];
       const randomLunch = lunchOptions[Math.floor(Math.random() * lunchOptions.length)];
       const randomDinner = dinnerOptions[Math.floor(Math.random() * dinnerOptions.length)];
@@ -235,13 +229,11 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
 
       const meals = [randomBreakfast, randomLunch, randomDinner, randomSnack];
       
-      // Calculate total nutrition values
       const totalCalories = meals.reduce((sum, meal) => sum + meal.calories, 0);
       const totalProtein = meals.reduce((sum, meal) => sum + meal.protein, 0);
       const totalCarbs = meals.reduce((sum, meal) => sum + meal.carbs, 0);
       const totalFat = meals.reduce((sum, meal) => sum + meal.fat, 0);
 
-      // Create new meal plan
       const newPlan: MealPlan = {
         id: Date.now().toString(),
         name: `Meal Plan for ${new Date().toLocaleDateString()}`,
@@ -269,16 +261,13 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    // Check if plan already exists
     const existingPlanIndex = savedPlans.findIndex(p => p.id === plan.id);
 
     let updatedPlans: MealPlan[];
     if (existingPlanIndex >= 0) {
-      // Update existing plan
       updatedPlans = [...savedPlans];
       updatedPlans[existingPlanIndex] = plan;
     } else {
-      // Add new plan
       updatedPlans = [...savedPlans, plan];
     }
 
@@ -299,13 +288,11 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateMeal = (planId: string, mealId: string, updatedMeal: Partial<Meal>) => {
-    // Update in current plan if it matches
     if (currentPlan && currentPlan.id === planId) {
       const updatedMeals = currentPlan.meals.map(meal => 
         meal.id === mealId ? { ...meal, ...updatedMeal } : meal
       );
       
-      // Recalculate nutrition totals
       const totalCalories = updatedMeals.reduce((sum, meal) => sum + meal.calories, 0);
       const totalProtein = updatedMeals.reduce((sum, meal) => sum + meal.protein, 0);
       const totalCarbs = updatedMeals.reduce((sum, meal) => sum + meal.carbs, 0);
@@ -322,7 +309,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
       
       setCurrentPlan(updatedPlan);
       
-      // If this plan is also saved, update it in savedPlans
       const savedPlanIndex = savedPlans.findIndex(plan => plan.id === planId);
       if (savedPlanIndex >= 0) {
         const updatedSavedPlans = [...savedPlans];
@@ -331,7 +317,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
         localStorage.setItem(`mealPlans_${user?.id}`, JSON.stringify(updatedSavedPlans));
       }
     } else {
-      // Update in saved plans
       const savedPlanIndex = savedPlans.findIndex(plan => plan.id === planId);
       if (savedPlanIndex >= 0) {
         const planToUpdate = savedPlans[savedPlanIndex];
@@ -339,7 +324,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
           meal.id === mealId ? { ...meal, ...updatedMeal } : meal
         );
         
-        // Recalculate nutrition totals
         const totalCalories = updatedMeals.reduce((sum, meal) => sum + meal.calories, 0);
         const totalProtein = updatedMeals.reduce((sum, meal) => sum + meal.protein, 0);
         const totalCarbs = updatedMeals.reduce((sum, meal) => sum + meal.carbs, 0);
@@ -368,7 +352,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     
     try {
-      // Find the plan to update
       let planToUpdate: MealPlan | null = null;
       
       if (currentPlan && currentPlan.id === planId) {
@@ -384,16 +367,13 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
         throw new Error("Meal plan not found");
       }
       
-      // Find the meal to replace
       const mealToReplace = planToUpdate.meals.find(meal => meal.id === mealId);
       if (!mealToReplace) {
         throw new Error("Meal not found");
       }
       
-      // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Get a random replacement of the same type
       let replacement: Meal;
       switch (mealToReplace.type) {
         case 'breakfast':
@@ -412,7 +392,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
           throw new Error("Invalid meal type");
       }
       
-      // Ensure we don't get the same meal again
       if (replacement.id === mealId) {
         const options = 
           mealToReplace.type === 'breakfast' ? breakfastOptions :
@@ -425,7 +404,6 @@ export const MealPlanProvider = ({ children }: { children: ReactNode }) => {
         }
       }
       
-      // Update the meal
       updateMeal(planId, mealId, replacement);
       toast.success("Meal replaced successfully!");
     } catch (error) {
