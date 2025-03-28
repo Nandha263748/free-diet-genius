@@ -11,8 +11,9 @@ import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
 
+// Form validation schema
 const formSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address' }),
+  email: z.string().email({ message: 'Enter a valid email address' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
 });
 
@@ -37,7 +38,8 @@ const LoginForm = () => {
       await login(values.email, values.password);
       navigate('/meal-planner');
     } catch (error) {
-      // Error is already handled in the login function
+      // Error handling is already done in the login function
+      console.log('Login error occurred');
     } finally {
       setIsSubmitting(false);
     }
@@ -46,9 +48,9 @@ const LoginForm = () => {
   return (
     <div className="max-w-md w-full mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold">Log In</h1>
+        <h1 className="text-2xl font-bold">Login to DietGenius</h1>
         <p className="text-sm text-gray-600 mt-1">
-          Welcome back! Enter your details below.
+          Sign in to access your meal plans
         </p>
       </div>
 
@@ -61,7 +63,7 @@ const LoginForm = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="email@example.com" {...field} />
+                  <Input placeholder="youremail@example.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,10 +88,10 @@ const LoginForm = () => {
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Logging in...
+                Signing in...
               </>
             ) : (
-              'Log in'
+              'Sign in'
             )}
           </Button>
         </form>
@@ -97,9 +99,9 @@ const LoginForm = () => {
 
       <div className="mt-6 text-center text-sm">
         <p>
-          Don't have an account?{' '}
+          Don't have an account yet?{' '}
           <Link to="/register" className="text-primary hover:underline">
-            Sign up
+            Create account
           </Link>
         </p>
       </div>
