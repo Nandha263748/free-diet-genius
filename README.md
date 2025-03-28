@@ -1,69 +1,80 @@
-# Welcome to your Lovable project
 
-## Project info
+# DietGenius - Free Personalized Nutrition Planning
 
-**URL**: https://lovable.dev/projects/97804424-a2e3-47cf-b1a7-e84c7953aaf3
+DietGenius is a free web application designed to help users create personalized meal plans, track nutritional information, and achieve their health goals.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **AI-Powered Meal Planning**: Create personalized meal plans based on your dietary preferences and restrictions
+- **BMI Calculator**: Calculate and track your Body Mass Index
+- **Nutrition Database**: Access detailed nutritional information for thousands of foods (coming soon)
+- **Recipe Collection**: Browse healthy, delicious recipes tailored to different dietary needs (coming soon)
+- **User Accounts**: Save your meal plans and track your progress over time
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/97804424-a2e3-47cf-b1a7-e84c7953aaf3) and start prompting.
+This project is built with:
 
-Changes made via Lovable will be committed automatically to this repo.
+- React
+- TypeScript
+- Vite
+- TailwindCSS
+- shadcn/ui components
+- React Router
+- Tanstack Query
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js & npm - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone <YOUR_REPOSITORY_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd diet-genius
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deploying to GitHub
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+To push this project to a GitHub repository:
 
-**Use GitHub Codespaces**
+1. Create a new repository on GitHub
+2. Initialize git in your local project if not already done:
+   ```sh
+   git init
+   ```
+3. Add your files to git:
+   ```sh
+   git add .
+   ```
+4. Commit your changes:
+   ```sh
+   git commit -m "Initial commit"
+   ```
+5. Add your GitHub repository as a remote:
+   ```sh
+   git remote add origin https://github.com/your-username/your-repo-name.git
+   ```
+6. Push your code to GitHub:
+   ```sh
+   git push -u origin main
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project URL
 
-## What technologies are used for this project?
+**URL**: https://lovable.dev/projects/97804424-a2e3-47cf-b1a7-e84c7953aaf3
 
-This project is built with .
+## License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/97804424-a2e3-47cf-b1a7-e84c7953aaf3) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is open source and available under the [MIT License](LICENSE).
