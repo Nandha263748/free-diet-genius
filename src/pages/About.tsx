@@ -2,7 +2,6 @@
 import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Card, CardContent } from "@/components/ui/card";
-import DeveloperProfile from '@/components/about/DeveloperProfile';
 
 const About = () => {
   return (
@@ -22,11 +21,6 @@ const About = () => {
               </p>
             </CardContent>
           </Card>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Meet the Developer</h2>
-          <DeveloperProfile />
         </section>
         
         <section>
