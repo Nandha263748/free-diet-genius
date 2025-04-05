@@ -23,20 +23,6 @@ const About = () => {
           </Card>
         </section>
         
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Project Developer</h2>
-          <Card>
-            <CardContent className="p-6">
-              <ul className="space-y-2">
-                <li>• Currently developing an AI-powered diet planner as part of my M.Sc. final-year project.</li>
-                <li>• Learning and implementing React.js and Flask to build a functional web application.</li>
-                <li>• Exploring free AI models for generating personalized meal plans.</li>
-                <li>• Working on improving user experience and diet recommendation accuracy.</li>
-              </ul>
-            </CardContent>
-          </Card>
-        </section>
-        
         <section>
           <h2 className="text-2xl font-semibold mb-6">Technology Stack</h2>
           <Card>
