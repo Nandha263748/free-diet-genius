@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,198 +17,204 @@ import { ZoomIn, X } from "lucide-react";
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   
-  // Updated photos with more realistic images directly related to diet/nutrition
   const photos = [
     {
       id: 1,
-      title: "Homepage of DietGenius",
-      description: "Featuring a vibrant hero section with a colorful meal plan preview, green 'Get Started' button, and welcoming tagline",
-      image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=800", // Healthy food layout on table
-      category: "ui"
+      title: "Balanced Meal Plate",
+      description: "A perfectly portioned plate with lean protein, healthy carbs, and colorful vegetables following the DietGenius meal principles",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800",
+      category: "meals"
     },
     {
       id: 2,
-      title: "Meal Plan Preview",
-      description: "Displaying a daily schedule with breakfast (oatmeal), lunch (grilled chicken salad), and dinner (salmon with quinoa)",
-      image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?w=800", // Meal prep containers
-      category: "features"
+      title: "Weekly Meal Prep",
+      description: "Organized meal preparation in containers showcasing DietGenius meal planning in action",
+      image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800",
+      category: "meals"
     },
     {
       id: 3,
-      title: "Testimonial Card",
-      description: "Featuring a user quote: 'I've never felt so energized—DietGenius fits my vegan lifestyle perfectly!'",
-      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800", // Person preparing healthy food
-      category: "ui"
+      title: "Nutrient-Rich Breakfast",
+      description: "A protein-packed breakfast bowl with fruits, nuts and yogurt as recommended in DietGenius morning meal plans",
+      image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=800",
+      category: "meals"
     },
     {
       id: 4,
-      title: "DietGenius on Mobile",
-      description: "Photo of a user accessing DietGenius on a smartphone, mirroring the website's responsive mobile view",
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800", // Mobile phone with food app
-      category: "ui"
+      title: "DietGenius Mobile Experience",
+      description: "User tracking nutrition information using the DietGenius mobile-responsive interface",
+      image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800",
+      category: "app"
     },
     {
       id: 5,
-      title: "Tech Stack Infographic",
-      description: "Inspired by DietGenius's footer, with icons for React, Tailwind CSS, and TypeScript in a green-themed layout",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800", // Computer with code
-      category: "infographics"
+      title: "Nutrition Calculator Interface",
+      description: "Screenshot of DietGenius nutrition calculator showing macronutrient breakdown",
+      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800",
+      category: "app"
     },
     {
       id: 6,
-      title: "Nutrient-Dense Foods Pyramid",
-      description: "Showing a pyramid of nutrient-dense foods like fruits, veggies, and lean proteins in green tones",
-      image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800", // Variety of vegetables in a pyramid-like arrangement
-      category: "infographics"
+      title: "Vegetable-Forward Diet",
+      description: "Fresh produce arrangement highlighting the plant-based options available in DietGenius meal plans",
+      image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800",
+      category: "nutrition"
     },
     {
       id: 7,
-      title: "Macronutrient Pie Chart",
-      description: "Showing a sample day's breakdown: 50% carbs, 30% protein, 20% fat",
-      image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?w=800", // Food divided into sections like a chart
-      category: "infographics"
+      title: "Macronutrient Distribution",
+      description: "Visual representation of optimal macronutrient balance as calculated by DietGenius algorithms",
+      image: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=800",
+      category: "nutrition"
     },
     {
       id: 8,
-      title: "Caloric Needs Dashboard",
-      description: "Displaying a user's TDEE and goal-adjusted target with a green progress bar",
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800", // Person tracking fitness on device
-      category: "features"
+      title: "Caloric Intake Tracking",
+      description: "DietGenius dashboard showing daily calorie goal vs. actual consumption with progress visualization",
+      image: "https://images.unsplash.com/photo-1495195129352-aeb325a55b65?w=800",
+      category: "app"
     },
     {
       id: 9,
-      title: "Health Benefits Graphic",
-      description: "Showing icons for heart, brain, and energy with green checkmarks",
-      image: "https://images.unsplash.com/photo-1505576633757-0ac1084af824?w=800", // Healthy heart foods
-      category: "infographics"
+      title: "Heart-Healthy Foods",
+      description: "Collection of heart-healthy foods recommended by DietGenius for cardiovascular wellness",
+      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800",
+      category: "nutrition"
     },
     {
       id: 10,
-      title: "Personalization Settings",
-      description: "Showing sliders for activity level and dietary preferences in a green-themed UI",
-      image: "https://images.unsplash.com/photo-1494390248081-4e521a5940db?w=800", // Organized healthy food choices
-      category: "ui"
+      title: "Personalized Diet Settings",
+      description: "DietGenius preference configuration screen showing dietary restriction options",
+      image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800",
+      category: "app"
     },
     {
       id: 11,
-      title: "Diet Planning Evolution Timeline",
-      description: "Showing diet planning evolution from paper logs to AI apps, with a green arrow pointing to DietGenius",
-      image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800", // Paper notes to mobile apps transition
-      category: "infographics"
+      title: "Nutrition Planning Evolution",
+      description: "The journey from traditional diet planning to DietGenius AI-assisted approach",
+      image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800",
+      category: "nutrition"
     },
     {
       id: 12,
-      title: "AI Flowchart",
-      description: "Showing user input → AI processing → personalized meal plan in a green-themed layout",
-      image: "https://images.unsplash.com/photo-1550645612-83f5d594b671?w=800", // AI or technology visualization
-      category: "tech"
+      title: "AI-Driven Meal Suggestions",
+      description: "Visualization of how DietGenius AI analyzes nutritional needs to generate personalized meal recommendations",
+      image: "https://images.unsplash.com/photo-1566598359998-62217fd5c588?w=800",
+      category: "app"
+    },
+    {
+      id: 13,
+      title: "Weight Management Journey",
+      description: "Before and after results from a DietGenius user showing successful weight management",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+      category: "success"
     },
     {
       id: 14,
-      title: "Future Trends Collage",
-      description: "Showing icons for wearables, microbiome, and sustainability in a green futuristic layout",
-      image: "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?w=800", // Person with fitness tracker
-      category: "infographics"
+      title: "Hydration Tracking",
+      description: "DietGenius water intake monitoring feature helping users maintain optimal hydration",
+      image: "https://images.unsplash.com/photo-1560787313-5dff3307e257?w=800",
+      category: "nutrition"
     },
     {
       id: 15,
-      title: "Objectives Infographic",
-      description: "Showing icons for 'Free Access,' 'AI Personalization,' and 'Health Goals' in a green circular layout",
-      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800", // Healthy food circle arrangement
-      category: "infographics"
+      title: "Nutrition Goals Dashboard",
+      description: "DietGenius user dashboard showing progress toward customized nutrition objectives",
+      image: "https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800",
+      category: "app"
     },
     {
       id: 16,
-      title: "Architecture Diagram",
-      description: "Showing React frontend → mock backend → local storage in a green flowchart",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800", // Code on a screen
-      category: "tech"
+      title: "Healthy Recipe Collection",
+      description: "Screenshot of DietGenius recipe library with nutritionally-balanced meal options",
+      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800",
+      category: "meals"
     },
     {
       id: 17,
-      title: "Feature Showcase",
-      description: "Displaying a grid of 'Meal Planner,' 'BMI Calculator,' and 'Recipes' with green icons",
-      image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800", // Organized healthy meal
-      category: "features"
+      title: "Portion Control Guide",
+      description: "Visual guide showing proper portion sizes as recommended by DietGenius nutritionists",
+      image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800",
+      category: "nutrition"
     },
     {
       id: 18,
-      title: "UI Mockup",
-      description: "Showing the meal plan page with a daily schedule, green 'Edit' buttons, and nutrition breakdown bars",
-      image: "https://images.unsplash.com/photo-1510832198440-a52376950479?w=800", // Design mockup on a screen
-      category: "ui"
+      title: "Weekly Meal Schedule",
+      description: "DietGenius weekly meal planner interface showing balanced nutrition across seven days",
+      image: "https://images.unsplash.com/photo-1506784926709-22f1ec395907?w=800",
+      category: "app"
     },
     {
       id: 19,
-      title: "Code Snippet Screenshot",
-      description: "From DietGenius's dev docs, showing a MealCard component with TypeScript props and Tailwind classes",
-      image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800", // Code on a computer screen
-      category: "tech"
+      title: "Nutrition Label Scanner",
+      description: "DietGenius mobile feature scanning food labels to instantly add items to daily tracking",
+      image: "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?w=800",
+      category: "app"
     },
     {
       id: 20,
-      title: "Meal Planner UI Screenshot",
-      description: "Showing a daily plan with green 'Edit' buttons and nutritional bars",
-      image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800", // Food planner layout
-      category: "ui"
+      title: "Healthy Protein Sources",
+      description: "Variety of lean protein options recommended in DietGenius meal plans",
+      image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800",
+      category: "nutrition"
     },
     {
       id: 21,
-      title: "Performance Dashboard",
-      description: "Showing a green 'Load Time: 1.2s' metric and optimization checklist",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800", // Dashboard metrics
-      category: "tech"
+      title: "Restaurant Meal Analyzer",
+      description: "DietGenius feature helping users make healthier choices when dining out",
+      image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800",
+      category: "app"
     },
     {
       id: 22,
-      title: "Testing Screenshot",
-      description: "From DietGenius's dev log, showing a Jest test suite with green 'Passed' indicators",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800", // People working on software
-      category: "tech"
+      title: "Fitness Integration",
+      description: "DietGenius calorie adjustment based on workout intensity and duration",
+      image: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?w=800",
+      category: "success"
     },
     {
       id: 23,
-      title: "Performance Report",
-      description: "Showing a green Lighthouse score card with 'Load Time: 1.2s' and 'Performance: 92'",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800", // Performance metrics visualization
-      category: "tech"
+      title: "Nutritional Progress Report",
+      description: "Monthly nutrition analytics showing improvements in dietary quality",
+      image: "https://images.unsplash.com/photo-1555243896-c709bfa0b564?w=800",
+      category: "app"
     },
     {
       id: 24,
-      title: "Feedback Form",
-      description: "Showing a green 'Submit' button and comments like 'Love the simplicity!'",
-      image: "https://images.unsplash.com/photo-1594578930365-18a6bc09ec38?w=800", // Person filling out form
-      category: "ui"
+      title: "User Testimonial Snapshot",
+      description: "Screenshot of DietGenius user sharing their success story and improved health metrics",
+      image: "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?w=800",
+      category: "success"
     },
     {
       id: 25,
-      title: "Database Mockup",
-      description: "Showing a green 'Scan Barcode' button and food entry form",
-      image: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800", // Food inventory or tracking
-      category: "features"
+      title: "Grocery Shopping Guide",
+      description: "DietGenius-generated shopping list organized by store section for efficient healthy shopping",
+      image: "https://images.unsplash.com/photo-1543168256-418811576931?w=800",
+      category: "meals"
     },
     {
       id: 26,
-      title: "Mobile App Mockup",
-      description: "Showing a green-themed plan screen on a phone with a 'Next Meal' notification",
-      image: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=800", // Mobile phone with food app
-      category: "ui"
+      title: "Mindful Eating Practice",
+      description: "DietGenius mindfulness feature encouraging slower, more conscious eating habits",
+      image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?w=800",
+      category: "nutrition"
     },
     {
       id: 27,
-      title: "Final Website Screenshot",
-      description: "Showing a happy user with a healthy meal and green 'Join Free' CTA",
-      image: "https://images.unsplash.com/photo-1530981785497-a62037228fe9?w=800", // Person happy with healthy meal
-      category: "ui"
+      title: "Nutritional Success Story",
+      description: "Before and after transformation highlighting DietGenius effectiveness",
+      image: "https://images.unsplash.com/photo-1519311726-1bcd4bc15713?w=800",
+      category: "success"
     }
   ];
 
   const categories = [
     { id: "all", name: "All Images" },
-    { id: "ui", name: "UI/UX" },
-    { id: "infographics", name: "Infographics" },
-    { id: "features", name: "Features" },
-    { id: "tech", name: "Technical" }
+    { id: "meals", name: "Meal Plans" },
+    { id: "nutrition", name: "Nutrition Info" },
+    { id: "app", name: "App Features" },
+    { id: "success", name: "Success Stories" }
   ];
 
   const getFilteredPhotos = (category: string) => {
@@ -235,9 +240,9 @@ const Gallery = () => {
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold mb-8">DietGenius Gallery</h1>
         <p className="mb-8 text-muted-foreground">
-          This gallery showcases visual representations of DietGenius features, UI components, 
-          and informational graphics. Each image corresponds to a specific aspect 
-          of the DietGenius platform and is designed to help you understand our service better.
+          This gallery showcases visual representations of DietGenius features, healthy meal options, 
+          nutrition information, and success stories. Each image illustrates how DietGenius 
+          can help you achieve your dietary and health goals.
         </p>
         
         <Tabs defaultValue="all" className="mb-8">
@@ -282,12 +287,11 @@ const Gallery = () => {
           ))}
         </Tabs>
 
-        {/* Featured Images Carousel */}
         <div className="mt-16 mb-8">
-          <h2 className="text-2xl font-bold mb-6">Featured Images</h2>
+          <h2 className="text-2xl font-bold mb-6">Featured Nutrition Highlights</h2>
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent>
-              {photos.filter(p => [2, 6, 9, 17, 20].includes(p.id)).map(photo => (
+              {photos.filter(p => [1, 2, 6, 17, 20].includes(p.id)).map(photo => (
                 <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                     <Card className="overflow-hidden">
@@ -315,7 +319,6 @@ const Gallery = () => {
           </Carousel>
         </div>
         
-        {/* Image Detail Dialog */}
         <Dialog open={selectedImage !== null} onOpenChange={open => !open && handleCloseDialog()}>
           <DialogContent className="max-w-4xl w-full">
             <DialogHeader>
