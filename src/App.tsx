@@ -23,6 +23,7 @@ import Blog from "./pages/Blog";
 import Recipes from "./pages/Recipes";
 import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/nutrition-database" element={<NutritionDatabase />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/recipes" element={<Recipes />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<NotFound />} />

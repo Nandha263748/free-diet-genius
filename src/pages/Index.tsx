@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Check, Brain, Salad, Calculator } from 'lucide-react';
+import { ArrowRight, Check, Brain, Salad, Calculator, Image } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const features = [
@@ -159,6 +158,48 @@ const Index = () => {
                 className="w-full h-auto rounded-xl"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8">DietGenius Gallery</h2>
+          <p className="text-lg text-center text-muted-foreground mb-8 max-w-3xl mx-auto">
+            Explore our collection of images showcasing DietGenius features, UI designs, and health information graphics.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-5xl mx-auto">
+            <div className="aspect-video rounded-lg overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" 
+                alt="Meal Plan Preview" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-video rounded-lg overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800" 
+                alt="DietGenius on Mobile" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="aspect-video rounded-lg overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800" 
+                alt="Nutrient-Dense Foods Pyramid" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="text-center">
+            <Button 
+              onClick={() => navigate('/gallery')}
+              className="gap-2"
+            >
+              View Full Gallery
+              <Image className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </section>
