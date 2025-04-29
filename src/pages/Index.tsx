@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Check, Brain, Salad, Calculator, Image } from 'lucide-react';
+import { ArrowRight, Check, Brain, Salad, Calculator, Image, Code, Database, Server, LayoutGrid } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const features = [
@@ -32,6 +33,39 @@ const benefits = [
   'Save and manage multiple meal plans',
   'Mobile-friendly interface accessible anywhere',
   'No paid plans or premium restrictions - ALL features are FREE'
+];
+
+// Technology stack data
+const techStack = [
+  {
+    category: "Frontend",
+    icon: <Code className="h-8 w-8 text-secondary" />,
+    technologies: [
+      { name: "React", description: "UI component library" },
+      { name: "TypeScript", description: "Type-safe JavaScript" },
+      { name: "Tailwind CSS", description: "Utility-first CSS framework" },
+      { name: "ShadCN UI", description: "Component library" },
+      { name: "React Router", description: "Navigation" }
+    ]
+  },
+  {
+    category: "State Management",
+    icon: <LayoutGrid className="h-8 w-8 text-secondary" />,
+    technologies: [
+      { name: "Context API", description: "State container" },
+      { name: "React Hooks", description: "Functional state management" },
+      { name: "TanStack Query", description: "Data fetching" }
+    ]
+  },
+  {
+    category: "Architecture", 
+    icon: <Server className="h-8 w-8 text-secondary" />,
+    technologies: [
+      { name: "Component-based", description: "Reusable UI components" },
+      { name: "Context Providers", description: "AuthContext, MealPlanContext" },
+      { name: "Responsive Design", description: "Mobile-friendly layouts" }
+    ]
+  }
 ];
 
 const Index = () => {
@@ -88,6 +122,67 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Stack Section */}
+      <section className="py-16 bg-gray-50" id="technology-stack">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-6">Our Technology Stack</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+            DietGenius is built using modern web technologies to provide a seamless user experience
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {techStack.map((category, idx) => (
+              <Card key={idx} className="card-hover">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    {category.icon}
+                    <CardTitle>{category.category}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {category.technologies.map((tech, techIdx) => (
+                      <li key={techIdx} className="flex items-start">
+                        <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-3 mt-0.5">
+                          <Check className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <span className="font-medium">{tech.name}</span>
+                          <p className="text-sm text-muted-foreground">{tech.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-16 max-w-4xl mx-auto p-6 border border-border rounded-lg bg-white">
+            <h3 className="text-xl font-semibold mb-4 text-center">System Architecture</h3>
+            <div className="relative">
+              <div className="flex flex-col items-center">
+                <div className="bg-primary/10 text-primary font-medium p-4 rounded-lg w-full md:w-3/4 text-center mb-6">
+                  User Interface (React + TypeScript + Tailwind)
+                </div>
+                <ArrowRight className="rotate-90 h-6 w-6 text-gray-400 my-2" />
+                <div className="bg-secondary/10 text-secondary font-medium p-4 rounded-lg w-full md:w-3/4 text-center mb-6">
+                  State Management (Context API)
+                  <div className="grid grid-cols-2 gap-3 mt-3">
+                    <div className="bg-white p-2 rounded border border-gray-200 text-sm">AuthContext</div>
+                    <div className="bg-white p-2 rounded border border-gray-200 text-sm">MealPlanContext</div>
+                  </div>
+                </div>
+                <ArrowRight className="rotate-90 h-6 w-6 text-gray-400 my-2" />
+                <div className="bg-accent/10 text-accent-foreground font-medium p-4 rounded-lg w-full md:w-3/4 text-center">
+                  Data Storage (Local + Future API Integration)
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
